@@ -24,10 +24,10 @@ def home():
 def db_test():
     try:
         conn = psycopg2.connect(
-            host=db_host,
-            dbname=db_name,
-            user=db_user,
-            password=db_pass
+            host=PG_HOST,
+            dbname=PG_DB,
+            user=PG_USERNAME,
+            password=PG_PASSWORD
         )
         conn.close()
         return "PostgreSQL test endpoint 🎯"
