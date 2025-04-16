@@ -21,18 +21,21 @@ def home():
     return "Hello from Azure App Service 🚀"
 
 @app.route("/db")
-def db():
+def db_test():
     try:
         conn = psycopg2.connect(
-            host=PG_HOST,
-            database=PG_DB,
-            user=PG_USERNAME,
-            password=PG_PASSWORD
+            host=db_host,
+            dbname=db_name,
+            user=db_user,
+            password=db_pass
         )
         conn.close()
         return "PostgreSQL test endpoint 🎯"
     except Exception as e:
-        return f"Database error: {str(e)}"
+        print("💥 DATABASE CONNECTION ERROR 💥")
+        print(str(e))  # hata detayını log stream'e bastırır
+        return f"Connection failed: {str(e)}"
+
 
 if __name__ == "__main__":
     app.run()
