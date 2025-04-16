@@ -10,7 +10,7 @@ VAULT_URL = "https://hellovaultgr1.vault.azure.net/"
 credential = DefaultAzureCredential()
 client = SecretClient(vault_url=VAULT_URL, credential=credential)
 
-# PostgreSQL bilgilerimizi vault'tan çekiyoruz
+# PostgreSQL bilgileri vault’tan çekiliyor
 PG_HOST = client.get_secret("POSTGRES-HOST").value
 PG_USERNAME = client.get_secret("POSTGRES-USERNAME").value
 PG_PASSWORD = client.get_secret("POSTGRES-PASSWORD").value
@@ -33,9 +33,8 @@ def db_test():
         return "PostgreSQL test endpoint 🎯"
     except Exception as e:
         print("💥 DATABASE CONNECTION ERROR 💥")
-        print(str(e))  # hata detayını log stream'e bastırır
+        print(str(e))
         return f"Connection failed: {str(e)}"
-
 
 if __name__ == "__main__":
     app.run()
