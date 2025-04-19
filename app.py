@@ -20,6 +20,10 @@ PG_DB = client.get_secret("POSTGRES-DATABASE").value
 def home():
     return "Hello from Azure App Service 🚀"
 
+@app.route("/hello")
+def hello():
+    return "Hello, 4453 - Midterm Project! from Işıl and Özge 👩‍💻👩‍💻"
+
 @app.route("/db")
 def db_test():
     try:
