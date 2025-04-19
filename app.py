@@ -27,7 +27,8 @@ def db_test():
             host=PG_HOST,
             dbname=PG_DB,
             user=PG_USERNAME,
-            password=PG_PASSWORD
+            password=PG_PASSWORD,
+            connect_timeout=5  # 💥 bağlantı 5 saniyede olmazsa hata fırlatır
         )
         conn.close()
         return "PostgreSQL test endpoint 🎯"
