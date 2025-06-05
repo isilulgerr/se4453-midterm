@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\isilu\OneDrive\Masaüstü\SE4453-Midterm Project\.venv"
+VIRTUAL_ENV="C:\Users\isilu\OneDrive\Masaüstü\SE4453-Midterm Project\SE4453-Midterm Project\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
