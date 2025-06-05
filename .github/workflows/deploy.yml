@@ -1,0 +1,33 @@
+name: Build and Deploy Flask App to Azure
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Azure CLI - ACR Login
+      run: az acr login --name isilacrgr1
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t isilacrgr1.azurecr.io/se4453-backend:latest .
+        docker push isilacrgr1.azurecr.io/se4453-backend:latest
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: hello-backend-gr1
+        images: isilacrgr1.azurecr.io/se4453-backend:latest
