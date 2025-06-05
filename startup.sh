@@ -1,4 +1,7 @@
 #!/bin/bash
-export FLASK_APP=app.py
-export FLASK_ENV=production
-gunicorn app:app --bind=0.0.0.0:$PORT
+
+# SSH başlat
+service ssh start
+
+# Flask uygulamasını başlat (gunicorn ile)
+exec gunicorn app:app --bind 0.0.0.0:8000
