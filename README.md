@@ -14,7 +14,17 @@ This project demonstrates the deployment of a Flask web application on Azure App
 - GitHub Actions CI/CD
 - Docker
 
-<pre><code>## 📁 Project Structure ``` . ├── app.py # Main Flask application ├── Dockerfile # Docker build configuration ├── startup.sh # Startup script to run SSH and Gunicorn ├── requirements.txt # Python dependencies ├── .env # Environment variables (for local use, not committed) ├── .github/ │ └── workflows/ │ └── deploy.yml # GitHub Actions CI/CD workflow ``` </code></pre>
+## 📁 Project Structure
+.
+├── app.py                  # Main Flask application
+├── Dockerfile              # Docker image build configuration
+├── startup.sh              # Launch script for SSH and Gunicorn
+├── requirements.txt        # Python dependencies
+├── .env                    # Local environment variables (excluded from Git)
+├── .github/
+│   └── workflows/
+│       └── deploy.yml      # GitHub Actions CI/CD workflow
+
 
 ## 🚀 Deployment Flow
 
