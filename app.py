@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 import psycopg2
-#helo
+
 app = Flask(__name__)
 
 @app.route("/hello")
@@ -19,7 +19,6 @@ def hello():
         return result
     except Exception as e:
         return f"Connection failed: {str(e)}"
-
 
 if __name__ == "__main__":
     app.run()
