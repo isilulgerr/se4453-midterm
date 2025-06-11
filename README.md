@@ -14,6 +14,7 @@ This project demonstrates the deployment of a Flask web application on Azure App
 - GitHub Actions CI/CD
 - Docker
 
+```
 ## 📁 Project Structure
 .
 ├── app.py                  # Main Flask application
@@ -24,7 +25,7 @@ This project demonstrates the deployment of a Flask web application on Azure App
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml      # GitHub Actions CI/CD workflow
-
+```
 
 ## 🚀 Deployment Flow
 
