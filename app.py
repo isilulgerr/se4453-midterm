@@ -7,6 +7,12 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello():
     try:
+        # Debug amaçlı environment variable değerlerini yazdır
+        print("POSTGRES_HOST:", os.environ.get("POSTGRES_HOST"))
+        print("POSTGRES_DATABASE:", os.environ.get("POSTGRES_DATABASE"))
+        print("POSTGRES_USERNAME:", os.environ.get("POSTGRES_USERNAME"))
+        print("POSTGRES_PASSWORD:", os.environ.get("POSTGRES_PASSWORD"))
+
         conn = psycopg2.connect(
             host=os.environ.get("POSTGRES_HOST"),
             dbname=os.environ.get("POSTGRES_DATABASE"),
