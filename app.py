@@ -8,11 +8,13 @@ app = Flask(__name__)
 def hello():
     try:
         conn = psycopg2.connect(
-            host=os.environ.get("POSTGRES_HOST"),
-            dbname=os.environ.get("POSTGRES_DATABASE"),
-            user=os.environ.get("POSTGRES_USERNAME"),
-            password=os.environ.get("POSTGRES_PASSWORD")
-        )
+    host=os.environ.get("POSTGRES_HOST"),
+    dbname=os.environ.get("POSTGRES_DATABASE"),
+    user=os.environ.get("POSTGRES_USERNAME"),
+    password=os.environ.get("POSTGRES_PASSWORD"),
+    sslmode='require'
+)
+
         cur = conn.cursor()
         cur.execute("SELECT 'Hello from DB!'")
         result = cur.fetchone()[0]
