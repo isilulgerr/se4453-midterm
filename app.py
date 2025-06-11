@@ -7,17 +7,22 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello():
     try:
-        # Debug amaçlı environment variable değerlerini yazdır
-        print("POSTGRES_HOST:", os.environ.get("POSTGRES_HOST"))
-        print("POSTGRES_DATABASE:", os.environ.get("POSTGRES_DATABASE"))
-        print("POSTGRES_USERNAME:", os.environ.get("POSTGRES_USERNAME"))
-        print("POSTGRES_PASSWORD:", os.environ.get("POSTGRES_PASSWORD"))
+        # Ortam değişkenlerini kontrol et
+        host = os.environ.get("POSTGRES_HOST")
+        dbname = os.environ.get("POSTGRES_DATABASE")
+        user = os.environ.get("POSTGRES_USERNAME")
+        password = os.environ.get("POSTGRES_PASSWORD")
 
+        # Hatalı ya da eksikse logla
+        if not all([host, dbname, user, password]):
+            return f"Missing environment variables. Host={host}, DB={dbname}, User={user}, Password={'SET' if password else 'MISSING'}"
+
+        # Bağlantı kur
         conn = psycopg2.connect(
-            host=os.environ.get("POSTGRES_HOST"),
-            dbname=os.environ.get("POSTGRES_DATABASE"),
-            user=os.environ.get("POSTGRES_USERNAME"),
-            password=os.environ.get("POSTGRES_PASSWORD"),
+            host=host,
+            dbname=dbname,
+            user=user,
+            password=password,
             sslmode='require'
         )
         cur = conn.cursor()
