@@ -12,7 +12,7 @@ def hello():
         dbname = os.environ.get("POSTGRES_DATABASE")
         user = os.environ.get("POSTGRES_USERNAME")
         password = os.environ.get("POSTGRES_PASSWORD")
-
+        #test
         # Hatalı ya da eksikse logla
         if not all([host, dbname, user, password]):
             return f"Missing environment variables. Host={host}, DB={dbname}, User={user}, Password={'SET' if password else 'MISSING'}"
